@@ -1,23 +1,23 @@
 const { openDb } = require("../libs/sqlite");
 
 const allSql = `
-  SELECT * FROM questions;
+  SELECT * FROM answers;
 `;
 
 const singleSql = `
-  SELECT * FROM questions where id = ?;
+  SELECT * FROM answers where id = ?;
 `;
 
 const creatSql = `
-INSERT INTO questions (supplierId, title, description) VALUES (?,?,?);
+INSERT INTO answers (questionId, supplierId, textContent) VALUES (?,?,?);
 `;
 
 const updateSql = `
-UPDATE questions set supplierId = ?, title = ?, description = ? WHERE id = ?;
+UPDATE answers set textContent = ? WHERE id = ?;
 `;
 
 const deleteSql = `
-DELETE FROM questions WHERE id = ?;
+DELETE FROM answers WHERE id = ?;
 `;
 
 const list = async (ctx) => {
@@ -28,19 +28,21 @@ const list = async (ctx) => {
 };
 
 const getSingle = async (ctx) => {
+  let params = ctx.params.id;
   const db = await openDb();
-  const result = await db.get(singleSql, [ctx]);
+  const result = await db.get(singleSql, [params]);
 
   return result;
 };
 
 const create = async (ctx) => {
   let reqBody = ctx.body;
+  let params = ctx.params.id;
   const db = await openDb();
   const result = await db.run(creatSql, [
+    params,
     reqBody.supplierId,
-    reqBody.title,
-    reqBody.description,
+    reqBody.textContent,
   ]);
   return result;
 };
@@ -49,12 +51,7 @@ const update = async (ctx) => {
   let reqBody = ctx.body;
   let params = ctx.params.id;
   const db = await openDb();
-  const result = await db.run(updateSql, [
-    reqBody.supplierId,
-    reqBody.title,
-    reqBody.description,
-    params,
-  ]);
+  const result = await db.run(updateSql, [reqBody.textContent, params]);
 
   return result;
 };
