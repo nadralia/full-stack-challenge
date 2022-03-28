@@ -26,7 +26,6 @@ const MessageList = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
         }}
         to={ROUTE_MESSAGE_CREATE}
       >
