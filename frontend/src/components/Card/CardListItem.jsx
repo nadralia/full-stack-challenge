@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { ROUTE_MESSAGE_PREFIX } from "../../config";
+
 export const CardListItem = (props) => {
   return (
     <div
@@ -8,6 +11,9 @@ export const CardListItem = (props) => {
         margin: "10px auto",
       }}
     >
+      <Link to={`${ROUTE_MESSAGE_PREFIX}/${props.message.id}`}>
+        {props.message.title}
+      </Link>
       <p>{props.message.description}</p>
     </div>
   );

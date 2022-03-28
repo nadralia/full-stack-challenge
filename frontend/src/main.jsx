@@ -10,10 +10,11 @@ import About from "./routes/about";
 import Home from "./routes/home";
 import Suppliers from "./routes/suppliers";
 import Message from "./routes/Message";
+import Answer from "./routes/Answer";
 
 import "./index.css";
 
-import { ROUTE_MESSAGE_CREATE } from "./config";
+import { ROUTE_MESSAGE_CREATE, ROUTE_MESSAGE_EDIT } from "./config";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,6 +25,7 @@ ReactDOM.render(
           <Route path="about" element={<About />} />
           <Route path="suppliers" element={<Suppliers />} />
           <Route path={ROUTE_MESSAGE_CREATE} element={<Message />} />
+          <Route path={ROUTE_MESSAGE_EDIT} element={<Answer />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -10,7 +10,7 @@ export const getAnswer = async (answerId) => {
   return response.data;
 };
 
-export const createAnswer = async (payload) => {
+export const createAnswer = async (messageId, payload) => {
   const response = await api.post(`questions/${messageId}`, payload);
   return response.data;
 };
