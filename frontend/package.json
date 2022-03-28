@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "prettier": "npx prettier --write ."
+  },
+  "dependencies": {
+    "history": "5",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-router-dom": "6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "1.1.0",
+    "prettier": "2.5.0",
+    "vite": "^2.6.4"
+  }
+}
